@@ -1,4 +1,5 @@
 import argparse
+import subprocess
 import time
 
 import cv2
@@ -15,12 +16,8 @@ def arg_parse():
 
 
 def green_led(on):
-    if on:
-        # TODO: turn on
-        pass
-    else:
-        # TODO: turn off
-        pass
+    cmd = 'echo {} > /sys/class/leds/led0/brightness'.format(1 if on else 0)
+    subprocess.Popen(cmd)
 
 
 def main(args):
